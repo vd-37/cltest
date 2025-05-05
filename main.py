@@ -1,14 +1,20 @@
 def maximize_sum_limited_flips(arr, k):
-    # Step 1: Count negative numbers
-    neg_count = sum(1 for x in arr if x < 0)
+    neg_count = count_negatives(arr)
 
     if k >= neg_count:
-        # Step 2: Flip all negatives
+        # Flip all negative numbers
         arr = [abs(x) for x in arr]
         return sum(arr)
     else:
-        # Step 3: Sort by value (ascending), flip first k elements
+        # Sort and flip the k most negative numbers
         arr.sort()
         for i in range(k):
             arr[i] = -arr[i]
         return sum(arr)
+
+def count_negatives(arr):
+    count = 0
+    for x in arr:
+        if x < 0:
+            count += 1
+    return count
