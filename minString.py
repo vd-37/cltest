@@ -21,7 +21,12 @@ def getMinString(s):
 
 # Helper Method 1: Modify the string by replacing a substring with "100"
 def modify_string(s, i):
-    return s[:i] + "100" + s[i+3:]
+    # Safely ensure we don't go out of bounds
+    if i + 3 <= len(s):  # Check if we can safely access s[i+3:]
+        return s[:i] + "100" + s[i+3:]
+    else:
+        return s[:i] + "100"  # If not, just append "100" at the end
+        
 
 # Helper Method 2: Check if a string is lexicographically smaller than another string
 def is_lexicographically_smaller(modified_string, original_string):
