@@ -2,8 +2,9 @@ def maximize_sum_limited_flips(arr, k):
     neg_count = count_negatives(arr)
 
     if k >= neg_count:
-        # Flip all negative numbers
-        arr = [abs(x) for x in arr]
+        # Flip all negative numbers (simplified loop)
+        for i in range(len(arr)):
+            arr[i] = abs(arr[i])
         return sum(arr)
     else:
         # Sort and flip the k most negative numbers
